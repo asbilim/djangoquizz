@@ -1,0 +1,28 @@
+{% load static %}
+<div class="flex w-full p-12 items-center justify-between my-24 overflow-hidden">
+
+    <!-- the part of the text -->
+    <div class="flex flex-1 flex-col gap-6 px-12 py-6">
+        <div class="flex flex-col gap-2 w-full">
+            <h2 class="text-[5.2rem] font-semibold">Learn</h2>
+            <h2 class="text-[5.2rem] font-semibold">new concepts</h2>
+            <h2 class="text-[5.2rem] font-semibold">for each questions</h2>
+        </div>
+
+        <div class="help px-4 py-2 border-l-2 border-l-slate-neutral font-light">
+            We help you prepare for exams and quizes
+        </div>
+        <div class="butt">
+            <button class="btn border-1 text-white leading-none px-12 py-2 bg-[#FCC822] hover:bg-[#FCC822] hover:text-white ease-in-out transition-colors no-animation">
+                Start solving
+            </button>
+        </div>
+
+    </div>
+
+    <div class="images flex flex-1 items-center justify-center p-8 relative ">
+        <img src="{%  static 'listings/images/bg1.png' %}" alt="some" class="w-[35rem] h-auto">
+        <img src="{%  static 'listings/images/bg2.png' %}" alt="i don't really now" class="w-[45rem] h-auto absolute top-2/5 opacity-40 left-3/5">
+    </div>
+
+</div>
