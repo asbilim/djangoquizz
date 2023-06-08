@@ -11,6 +11,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Geologica:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    {% load static%}
+    
 </head>
 
 <style>
@@ -22,11 +24,14 @@
 <body>
 
     <div class="grid w-full h-screen grid-cols-2">
-        <div class="text">
-
+        <div class="flex items-center justify-center flex-col h-full ">
+            {% block form %}
+            {% endblock %}
         </div>
-        <div class="image bg-primary">
-
+        <div class="image bg-base-200 flex items-center justify-center">
+            <img src="{% static 'listings/images/login.png' %}" alt="" class="w-[30rem] h-auto">
+            {% block image %}
+            {% endblock %}
         </div>
     </div>
 

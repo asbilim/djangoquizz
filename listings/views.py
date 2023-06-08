@@ -7,4 +7,4 @@ def home(request):
 
 def login(request):
     
-    return render(request)
+    return render(request,'listings/auth/login.html')
