@@ -25,7 +25,7 @@
                 {% if answer.is_correct %}
                     <div class="bg-[#fcc822] px-16 py-6 h-24 flex items-center justify-center text-center cursor-pointer hover:bg-warning hover:text-white row-span-1 answer-item text-white" onclick="" data-value="{{answer.id}}">{{answer.answer}}</div>
                 {% else %}
-                    <div class="bg-base-300 px-16 py-6 h-24 flex items-center justify-center text-center cursor-pointer hover:bg-warning hover:text-white row-span-1 answer-item" onclick="setQuestion(event)" data-value="{{answer.id}}">{{answer.answer}}</div>
+                    <div class="bg-base-300 px-16 py-6 h-24 flex items-center justify-center text-center cursor-pointer hover:bg-warning hover:text-white row-span-1 answer-item" onclick="" data-value="{{answer.id}}">{{answer.answer}}</div>
                 {% endif %}
             {% endfor %}
         {% else %}
