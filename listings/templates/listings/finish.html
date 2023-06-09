@@ -1,0 +1,8 @@
+{% extends "listings/base.html" %}
+
+{% block content %}
+<div class="flex w-full h-[50vh] gap-16 items-center justify-center flex-col">
+    <h2 class="text-slate-500 text-7xl underline underline-offset-4">Thanks for taking the quiz</h2>
+    <p class="text-7xl text-slate-500 font-semibold">Your score is <span class="text-success">{{score}}</span> </p>
+</div>
+{% endblock %}
