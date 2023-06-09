@@ -12,7 +12,7 @@ def login(request):
 
     if request.user.is_authenticated:
 
-        return redirect('main-home-page')
+        return redirect('explore')
 
     if request.method == 'POST':
 
