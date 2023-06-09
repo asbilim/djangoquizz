@@ -12,7 +12,7 @@ def login(request):
 
     if request.user.is_authenticated:
 
-        return redirect('main-home-page')
+        return redirect('explore')
 
     if request.method == 'POST':
 
@@ -132,3 +132,9 @@ def quiz_done(request,score):
 def quiz_error(request):
 
     return render(request,'listings/error.html')
+
+def explore(request):
+
+    quiz = Quiz.objects.all()
+
+    return render(request,'listings/all.html',{"quiz":quiz})

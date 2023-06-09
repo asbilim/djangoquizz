@@ -1,0 +1,10 @@
+<div class="card w-96 bg-base-100 shadow-xl">
+    <figure><img src="{{image.url}}" class="aspect-square w-64" alt="" /></figure>
+    <div class="card-body flex items-center justify-center">
+      <h2 class="card-title text-center">{{name}}</h2>
+      <p class="text-center">{{description}}</p>
+      <div class="card-actions justify-end">
+        <button class="btn bg-[#FCC822] hover:bg-[#fcc822] text-white btn-wide no-animation"><a href="{% url 'single-quiz' id '1' %}">Start the quiz</a></button>
+      </div>
+    </div>
+  </div>

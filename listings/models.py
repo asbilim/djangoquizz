@@ -42,6 +42,7 @@ class Quiz(models.Model):
     question_value = models.IntegerField()
     description = models.TextField(null=True, blank=True)
     final_score = models.IntegerField(null=True, blank=True)
+    image = models.ImageField(null=True, blank=True,upload_to="media/quiz/")
 
     def __str__(self):
         return self.name

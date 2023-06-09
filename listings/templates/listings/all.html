@@ -1,0 +1,12 @@
+{% extends "listings/base.html" %}
+
+{% block content %}
+<div class="flex w-full  gap-16 my-24 items-center justify-center flex-col">
+    <h2 class="text-slate-700 text-7xl underline underline-offset-4  my-8">Explore the different quizzes</h2>
+    <div class="grid grid-cols-4 gap-16 ">
+        {% for item in quiz %}
+            {% include "listings/quiz/components/singlequiz.html" with name=item.name description=item.description image=item.image id=item.id %}
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
