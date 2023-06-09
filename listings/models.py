@@ -25,6 +25,8 @@ class Question(models.Model):
     category = models.ForeignKey(QuizCategories, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     answers = models.ManyToManyField(Answer,null=True,blank=True)
+    is_done = models.BooleanField(default=True)
+    choice = models.ForeignKey(Answer,on_delete=models.CASCADE,null=True,blank=True,related_name="choice")
 
     def __str__(self):
         return self.name
@@ -39,6 +41,7 @@ class Quiz(models.Model):
     questions = models.ManyToManyField(Question)
     question_value = models.IntegerField()
     description = models.TextField(null=True, blank=True)
+    final_score = models.IntegerField(null=True, blank=True)
 
     def __str__(self):
         return self.name

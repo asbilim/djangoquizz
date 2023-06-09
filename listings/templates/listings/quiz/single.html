@@ -15,15 +15,30 @@
         </ul>
     </div>
 
-    <div class="questions p-8 w-full bg-[#FCC822] text-lg items-center justify-center text-white font-bold text-center">
+    <div class="questions p-8 w-full bg-[#FCC822] text-2xl items-center justify-center text-white font-bold text-center">
         {{question}}
     </div>
 
     <div class="grid w-full grid-cols-4 items-center justify-between my-24 gap-4 grid-rows-1">
-        {% for answer in current_question_answers %}
-            <div class="bg-base-300 px-16 py-6 h-24 flex items-center justify-center text-center cursor-pointer hover:bg-warning hover:text-white row-span-1">{{answer.answer}}</div>
-        {% endfor %}
+        {% if is_done %}
+            {% for answer in current_question_answers %}
+                {% if answer.is_correct %}
+                    <div class="bg-[#fcc822] px-16 py-6 h-24 flex items-center justify-center text-center cursor-pointer hover:bg-warning hover:text-white row-span-1 answer-item text-white" onclick="" data-value="{{answer.id}}">{{answer.answer}}</div>
+                {% else %}
+                    <div class="bg-base-300 px-16 py-6 h-24 flex items-center justify-center text-center cursor-pointer hover:bg-warning hover:text-white row-span-1 answer-item" onclick="setQuestion(event)" data-value="{{answer.id}}">{{answer.answer}}</div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            {% for answer in current_question_answers %}
+                <div class="bg-base-300 px-16 py-6 h-24 flex items-center justify-center text-center cursor-pointer hover:bg-warning hover:text-white row-span-1 answer-item" onclick="setQuestion(event)" data-value="{{answer.id}}">{{answer.answer}}</div>
+            {% endfor %}
+        {% endif %}
     </div>
+
+    <form method="POST" name="choiceForm" id="choiceForm">
+        {% csrf_token %}
+        <input type="hidden" name="choice" value="" id="choice">
+    </form>
 
     <div class="control flex w-full items-center justify-between py-4">
         <div class="previous">
@@ -38,7 +53,7 @@
             {% endif %}
         </div>
         <div class="next flex gap-16 items-center justify-between px-12">
-            <button class="btn border-1 bg-[#FCC822] leading-none px-6 py-2 hover:bg-[#FCC822] shadow-sm text-white ease-in-out transition-colors mx-3 shadow-[#fcc822]">
+            <button onclick="onSubmit()" id="submitChoice" class="btn border-1 bg-[#FCC822] leading-none px-6 py-2 hover:bg-[#FCC822] shadow-sm text-white ease-in-out transition-colors mx-3 shadow-[#fcc822]">
                 <a href="#">Next</a>
             </button>
             <button class="btn border-0 text-[#FCC822] leading-none px-6 py-2 hover:bg-transparent bg-transparent   ease-in-out transition-colors mx-3 shadow-[#fcc822]">
@@ -48,5 +63,35 @@
     </div>
 
 </div>
+
+{% endblock %}
+
+{% block script %}
+
+<script>
+    
+    const onSubmit = ()=>{
+        const choice = document.getElementById("choice")
+        if(choice.value){
+            document.getElementById("choiceForm").submit();
+        }
+        return false
+    }
+
+    function setQuestion(e) {
+    answerItems = document.querySelectorAll('.answer-item');
+    const choice = document.getElementById("choice")
+    const choiceValue = e.target.dataset.value
+    choice.value = choiceValue
+    answerItems.forEach(element => {
+        element.classList.remove('bg-[#FCC822]');
+        element.classList.remove('text-white');
+    });
+    e.target.classList.add('bg-[#FCC822]');
+    e.target.classList.add('text-white');
+    }
+
+
+</script>
 
 {% endblock %}
