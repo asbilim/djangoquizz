@@ -7,7 +7,7 @@
     
     <div class="mt-4 w-full px-36">
       <label for="email" class="block text-sm">Username</label>
-      <input type="email" id="email" name="email" placeholder="Enter your email" class="w-full px-3 py-4 mt-1 text-base border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
+      <input type="text" id="username" name="username" placeholder="Enter your username" class="w-full px-3 py-4 mt-1 text-base border border-gray-300 rounded-md focus:outline-none focus:ring focus:ring-indigo-100 focus:border-indigo-300">
     </div>
     <div class="mt-4 mx-auto w-full px-36">
       <label for="password" class="block text-sm">Password</label>
@@ -19,10 +19,11 @@
         <label for="remember" class="ml-2 text-sm">Remember me</label>
       </div>
       <div>
-        <a href="#" class="text-sm text-indigo-600 hover:underline">Forgot your password?</a>
+        <a href="{% url 'auth-register' %}" class="text-sm text-indigo-600 hover:underline">Don't have an account?</a>
       </div>
     </div>
     <div class="px-36 w-full">
       <button type="submit" class="w-full px-4 py-2 text-lg font-semibold text-white bg-indigo-600 rounded-lg hover:bg-indigo-700 focus:outline-none focus:ring focus:ring-indigo-300 btn btn-wide no-animation">Login</button>
     </div>
+    {% csrf_token %}
   </form>

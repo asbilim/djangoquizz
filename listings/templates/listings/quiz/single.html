@@ -1,0 +1,52 @@
+{% extends "listings/base.html" %}
+
+{% block content %}
+
+<div class="w-full my-16 flex items-center justify-center flex-col gap-12 px-12">
+    <div class="step-container p-4 w-full items-center justify-center">
+        <ul class="steps w-full">
+            {% for i in ""|center:number_questions %}
+            {% if forloop.counter <= question_number %}
+                <li class="step step-warning"></li>
+            {% else %}
+                <li class="step"></li>
+            {% endif %}
+            {% endfor %}
+        </ul>
+    </div>
+
+    <div class="questions p-8 w-full bg-[#FCC822] text-lg items-center justify-center text-white font-bold text-center">
+        {{question}}
+    </div>
+
+    <div class="grid w-full grid-cols-4 items-center justify-between my-24 gap-4 grid-rows-1">
+        {% for answer in current_question_answers %}
+            <div class="bg-base-300 px-16 py-6 h-24 flex items-center justify-center text-center cursor-pointer hover:bg-warning hover:text-white row-span-1">{{answer.answer}}</div>
+        {% endfor %}
+    </div>
+
+    <div class="control flex w-full items-center justify-between py-4">
+        <div class="previous">
+            {% if question_number == 1 %}
+                <button class="btn no-animation disabled" disabled>
+                    Previous
+                </button>
+            {% else %}
+            <button class="btn no-animation " >
+                Previous
+            </button>
+            {% endif %}
+        </div>
+        <div class="next flex gap-16 items-center justify-between px-12">
+            <button class="btn border-1 bg-[#FCC822] leading-none px-6 py-2 hover:bg-[#FCC822] shadow-sm text-white ease-in-out transition-colors mx-3 shadow-[#fcc822]">
+                <a href="#">Next</a>
+            </button>
+            <button class="btn border-0 text-[#FCC822] leading-none px-6 py-2 hover:bg-transparent bg-transparent   ease-in-out transition-colors mx-3 shadow-[#fcc822]">
+                <a href="#">Skip</a>
+            </button>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
